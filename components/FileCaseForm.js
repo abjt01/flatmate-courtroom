@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { api, caseUrl } from "./api";
 
@@ -19,6 +20,7 @@ function Choices({ name, items, value, onChange }) {
 }
 
 export default function FileCaseForm({ styles, languages }) {
+  const router = useRouter();
   const [title, setTitle] = useState("");
   const [context, setContext] = useState("");
   const [you, setYou] = useState("");
@@ -44,7 +46,7 @@ export default function FileCaseForm({ styles, languages }) {
         style,
         language,
       });
-      window.location.href = caseUrl(res);
+      router.push(caseUrl(res));
     } catch (err) {
       setError(err.message);
       setBusy(false);

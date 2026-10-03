@@ -1,9 +1,11 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { api, caseUrl } from "./api";
 
 export default function SampleCases({ samples }) {
+  const router = useRouter();
   const [busy, setBusy] = useState(null);
   const [error, setError] = useState("");
 
@@ -11,7 +13,7 @@ export default function SampleCases({ samples }) {
     setBusy(id);
     setError("");
     try {
-      window.location.href = caseUrl(await api(`/api/samples/${id}`, {}));
+      router.push(caseUrl(await api(`/api/samples/${id}`, {})));
     } catch (err) {
       setError(err.message);
       setBusy(null);
