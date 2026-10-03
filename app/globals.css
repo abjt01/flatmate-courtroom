@@ -309,7 +309,7 @@ button:disabled { opacity: 0.6; cursor: progress; }
 .legend strong { font-size: 1.15rem; font-family: var(--serif); }
 
 .bench-split { margin-top: 14px; font-size: 0.9rem; }
-.bench-split > div { display: grid; grid-template-columns: 8.5em 1fr; gap: 10px; align-items: center; margin-bottom: 6px; }
+.bench-split > div { display: grid; grid-template-columns: 10.5em 1fr; gap: 10px; align-items: center; margin-bottom: 6px; }
 .bench-split .mini { display: flex; height: 8px; border-radius: 999px; overflow: hidden; }
 .bench-split .mini span { background: var(--c); }
 .bench-split .tag { color: var(--warn); font-weight: 600; }
