@@ -12,6 +12,7 @@ function Bar({ blame, names, colorOf, className }) {
 
 export default function Verdict({ view, colorOf }) {
   const v = view.verdict;
+  const reasons = v.bench.filter((o) => o.reasoning);
   const names = view.parties.map((p) => p.name);
   const decided = new Date(v.decidedAt);
   const allSigned = view.parties.every((p) => p.accepted);
@@ -89,14 +90,16 @@ export default function Verdict({ view, colorOf }) {
       {v.absent?.length > 0 && (
         <p className="notice">{v.absent.join(" and ")} couldn&apos;t make it to court, so the bench ruled without them.</p>
       )}
-      <details className="reasons">
-        <summary>Read each judge&apos;s reasoning</summary>
-        {v.bench.map((o) => (
-          <p key={o.judge}>
-            <b>{o.judge}:</b> {o.reasoning}
-          </p>
-        ))}
-      </details>
+      {reasons.length > 0 && (
+        <details className="reasons">
+          <summary>Read each judge&apos;s reasoning</summary>
+          {reasons.map((o) => (
+            <p key={o.judge}>
+              <b>{o.judge}:</b> {o.reasoning}
+            </p>
+          ))}
+        </details>
+      )}
 
       {v.dissent && (
         <>

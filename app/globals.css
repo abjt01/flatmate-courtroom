@@ -310,7 +310,7 @@ button:disabled { opacity: 0.6; cursor: progress; }
 .blame-bar span + span { border-left: 2px solid var(--card); }
 .legend { list-style: none; padding: 0 !important; display: flex; flex-wrap: wrap; gap: 6px 16px; }
 .legend li { display: flex; align-items: center; gap: 6px; margin: 0 !important; }
-.legend strong { font-size: 1.15rem; font-family: var(--serif); }
+.legend strong { font-size: 1.15rem; font-family: var(--serif); white-space: nowrap; }
 
 .bench-split { margin-top: 14px; font-size: 0.9rem; }
 .bench-split > div { display: grid; grid-template-columns: minmax(7em, 40%) 1fr; gap: 10px; align-items: center; margin-bottom: 6px; }
