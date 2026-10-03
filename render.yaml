@@ -6,6 +6,8 @@ services:
     buildCommand: npm ci && npm run build
     startCommand: npm start
     healthCheckPath: /healthz
+    # only deploy commits that pass CI
+    autoDeployTrigger: checksPass
     envVars:
       - key: NODE_VERSION
         value: "22"
