@@ -9,6 +9,11 @@
   --gold: #a87b22;
   --ok: #2f6b3a;
   --warn: #9a5b00;
+  --p0: #8a1c1c;
+  --p1: #1f5f8b;
+  --p2: #a87b22;
+  --p3: #2f6b3a;
+  --p4: #6b3fa0;
   --serif: var(--font-serif), Georgia, "Times New Roman", serif;
   --sans: var(--font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
   --radius: 14px;
@@ -27,6 +32,11 @@
     --gold: #d6a84c;
     --ok: #74c182;
     --warn: #e3ab4c;
+    --p0: #e0675d;
+    --p1: #5fa8d8;
+    --p2: #d6a84c;
+    --p3: #74c182;
+    --p4: #b18be0;
     color-scheme: dark;
   }
 }

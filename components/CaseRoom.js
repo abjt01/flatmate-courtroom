@@ -5,7 +5,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { api, copy, whatsapp } from "./api";
 import Verdict from "./Verdict";
 
-const COLORS = ["#8a1c1c", "#1f5f8b", "#a87b22", "#2f6b3a", "#6b3fa0"];
+const COLORS = ["var(--p0)", "var(--p1)", "var(--p2)", "var(--p3)", "var(--p4)"];
 
 function Header({ view }) {
   return (
