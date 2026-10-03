@@ -307,13 +307,14 @@ export default function CaseRoom({ id, k, p }) {
   useEffect(() => {
     let timer;
     let alive = true;
-    async function tick() {
-      const next = document.hidden ? null : await load();
+    // always load once, even in a background tab; after that, only poll while visible
+    async function tick(first = false) {
+      const next = !first && document.hidden ? null : await load();
       if (!alive) return;
       const status = next?.status;
       timer = setTimeout(tick, status === "deliberating" ? 2500 : status === "open" ? 5000 : 15000);
     }
-    tick();
+    tick(true);
     const wake = () => {
       if (!document.hidden) {
         clearTimeout(timer);
