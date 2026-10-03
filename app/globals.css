@@ -48,6 +48,8 @@ body {
   background: var(--paper);
   color: var(--ink);
   font: 16px/1.55 var(--sans);
+  /* names, URLs and keyboard-mashing in statements must never push the page sideways */
+  overflow-wrap: anywhere;
 }
 a { color: var(--accent); }
 h1, h2, h3 { font-family: var(--serif); line-height: 1.15; margin: 0 0 0.5rem; font-weight: 700; }
@@ -138,6 +140,7 @@ button, .btn {
   padding: 10px 16px;
   font-weight: 600;
 }
+button, .btn { white-space: nowrap; }
 button:disabled { opacity: 0.6; cursor: progress; }
 .btn { display: inline-block; text-decoration: none; line-height: inherit; }
 .primary {
@@ -166,6 +169,7 @@ button:disabled { opacity: 0.6; cursor: progress; }
 .samples { display: grid; gap: 10px; }
 @media (min-width: 600px) { .samples { grid-template-columns: repeat(3, 1fr); } }
 .sample {
+  white-space: normal;
   text-align: left;
   font-weight: 400;
   padding: 14px;
@@ -225,7 +229,7 @@ button:disabled { opacity: 0.6; cursor: progress; }
 .status { margin-left: auto; font-size: 0.85rem; font-weight: 600; }
 .status.ok { color: var(--ok); }
 .status.wait { color: var(--warn); }
-.share { flex-basis: 100%; display: flex; gap: 8px; padding-left: 20px; }
+.share { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 8px; padding-left: 20px; }
 
 .filed {
   border-left: 3px solid var(--ok);
@@ -309,7 +313,7 @@ button:disabled { opacity: 0.6; cursor: progress; }
 .legend strong { font-size: 1.15rem; font-family: var(--serif); }
 
 .bench-split { margin-top: 14px; font-size: 0.9rem; }
-.bench-split > div { display: grid; grid-template-columns: 10.5em 1fr; gap: 10px; align-items: center; margin-bottom: 6px; }
+.bench-split > div { display: grid; grid-template-columns: minmax(7em, 40%) 1fr; gap: 10px; align-items: center; margin-bottom: 6px; }
 .bench-split .mini { display: flex; height: 8px; border-radius: 999px; overflow: hidden; }
 .bench-split .mini span { background: var(--c); }
 .bench-split .tag { color: var(--warn); font-weight: 600; }
@@ -347,7 +351,8 @@ summary { cursor: pointer; font-weight: 600; color: var(--ink); }
 }
 
 .signatures { list-style: none; padding: 0 !important; }
-.signatures li { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--line); padding: 8px 0; margin: 0 !important; }
+.signatures li { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dashed var(--line); padding: 8px 0; margin: 0 !important; }
+.signatures li > span:last-child { flex: none; }
 .signed { color: var(--ok); font-weight: 600; }
 .unsigned { color: var(--muted); }
 .final {

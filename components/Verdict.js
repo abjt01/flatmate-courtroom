@@ -106,13 +106,17 @@ export default function Verdict({ view, colorOf }) {
       )}
 
       <h3>Orders of the court</h3>
-      <ol>
-        {v.orders.map((o, i) => (
-          <li key={i} className="order" style={{ "--c": colorOf(o.party) }}>
-            <b>{o.party}</b>: {o.order}
-          </li>
-        ))}
-      </ol>
+      {v.orders.length ? (
+        <ol>
+          {v.orders.map((o, i) => (
+            <li key={i} className="order" style={{ "--c": colorOf(o.party) }}>
+              <b>{o.party}</b>: {o.order}
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <p>No orders. Everyone carry on.</p>
+      )}
 
       {v.rota.length > 0 && (
         <>

@@ -15,7 +15,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const { bench, chief, mock } = benchInfo();
+  const { bench, chief, mock, groq } = benchInfo();
   return (
     <html lang="en" className={`${serif.variable} ${sans.variable}`}>
       <body>
@@ -27,8 +27,8 @@ export default function RootLayout({ children }) {
         {children}
         <footer className="foot">
           <p>
-            On the bench: {bench.join(", ")}. {chief} writes the judgment. All open-weight models, served free on
-            Groq.
+            On the bench: {bench.join(", ")}. {chief} writes the judgment. All open-weight models
+            {groq ? ", served free on Groq." : "."}
           </p>
           {mock && (
             <p>

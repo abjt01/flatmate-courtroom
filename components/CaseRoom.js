@@ -155,6 +155,8 @@ function Convene({ view, send, busy }) {
   const missing = view.parties.filter((p) => !p.filed).map((p) => p.name);
   if (filed.length < 2) return null;
   if (!missing.length && !view.error) return null;
+  // only the filer can call the bench early; anyone can retry once everyone has filed
+  if (missing.length && !view.admin) return null;
   return (
     <section className="card">
       <h2>{missing.length ? "Don't want to wait?" : "Try again"}</h2>
@@ -176,7 +178,7 @@ function BenchLive({ view }) {
   return (
     <section className="card bench-live" aria-live="polite">
       <h2>{view.verdict ? "The bench is hearing the appeal" : "The bench is deliberating"}</h2>
-      <p className="notice">Each judge reads the case on their own. This takes about half a minute.</p>
+      <p className="notice">Each judge reads the case on their own. This usually takes a few seconds.</p>
       <div className="judges">
         {judges.map((j) => (
           <div key={j.judge} className={`judge ${j.state}`}>
@@ -365,7 +367,7 @@ export default function CaseRoom({ id, k, p }) {
         <>
           {view.me && <Statement key={view.me.statement?.filedAt ?? "new"} view={view} send={send} busy={busy} />}
           <Parties view={view} colorOf={colorOf} />
-          {view.admin && <Convene view={view} send={send} busy={busy} />}
+          {(view.admin || view.me) && <Convene view={view} send={send} busy={busy} />}
           {!view.me && !view.admin && (
             <p className="notice">
               This case is waiting for statements. If you&apos;re one of the flatmates, open the private link you were
